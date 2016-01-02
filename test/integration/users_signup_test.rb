@@ -1,6 +1,4 @@
-
-  
-  require 'test_helper'
+require 'test_helper'
 
 class UsersSignupTest < ActionDispatch::IntegrationTest
 
@@ -13,8 +11,9 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
                                password_confirmation: "bar" }
     end
     assert_template 'users/new'
-    
-    test "valid signup information" do
+  end
+  
+  test "valid signup information" do
     get signup_path
     assert_difference 'User.count', 1 do
       post_via_redirect users_path, user: { name:  "Example User",
@@ -24,6 +23,4 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_template 'users/show'
   end
-  end
 end
-
